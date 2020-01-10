@@ -74,7 +74,7 @@ public class DepartmentPanel extends AbsItemPanel<Department> {
 		String b= tfDeptName.getText().trim();
 		int c= Integer.parseInt(tfFloor.getText().trim());
 		Department department = new Department(a,b,c);
-		return department;
+		return department;   //return new Department(a,b,c);가능 
 	}
 	
 }
