@@ -11,7 +11,7 @@ import javax.swing.JTextField;
 import java.awt.GridLayout;
 import javax.swing.SwingConstants;
 
-public class DepartmentPanel extends JPanel {
+public class DepartmentPanel extends AbsItemPanel<Department> {
 	private JLabel lblDeptNo;
 	private JTextField tfDeptNo;
 	private JLabel lblDeptName;
@@ -54,24 +54,27 @@ public class DepartmentPanel extends JPanel {
 		tfFloor.setColumns(10);
 		add(tfFloor);
 	}
-	public Department getItem() {
-		
-		int a= Integer.parseInt(tfDeptNo.getText().trim());
-		String b= tfDeptName.getText().trim();
-		int c= Integer.parseInt(tfFloor.getText().trim());
-		Department department = new Department(a,b,c);
-		return department;
-	}
+
 	public void clearTf() {
 		tfDeptNo.setText("");
 		tfDeptName.setText("");
 		tfFloor.setText("");
 	}
 	
-	private void setItem(Department dept) {
+	
+	@Override
+	public void setItem(Department dept) {
 		tfDeptNo.setText(dept.getDeptNo()+"");
 		tfDeptName.setText(new String(dept.getDeptName()+""));
 		tfFloor.setText(dept.getFloor()+"");
+	}
+	@Override
+	public Department getItem() {
+		int a= Integer.parseInt(tfDeptNo.getText().trim());
+		String b= tfDeptName.getText().trim();
+		int c= Integer.parseInt(tfFloor.getText().trim());
+		Department department = new Department(a,b,c);
+		return department;
 	}
 	
 }

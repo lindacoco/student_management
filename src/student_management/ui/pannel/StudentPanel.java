@@ -10,7 +10,7 @@ import javax.swing.border.TitledBorder;
 
 import student_management.dto.Student;
 
-public class StudentPanel extends JPanel {
+public class StudentPanel extends AbsItemPanel<Student> {
 	private JLabel lblstdNo;
 	private JTextField tfNo;
 	private JLabel lblstdName;
@@ -73,6 +73,21 @@ public class StudentPanel extends JPanel {
 		tfEng.setColumns(10);
 		add(tfEng);
 	}
+	
+	public void clearTf() {
+		tfNo.setText("");
+		tfName.setText("");
+		tfKor.setText("");
+		tfMath.setText("");
+		tfEng.setText("");
+	}
+	
+
+	/*
+	 * protected void setStudent(ActionEvent e) { Student newStudent = new
+	 * Student(1,"장현서",80,90,70); setStudent(newStudent); }
+	 */
+	@Override
 	public Student getItem() {
 		int a = Integer.parseInt(tfNo.getText().trim());
 		String b= tfName.getText().trim();
@@ -82,23 +97,12 @@ public class StudentPanel extends JPanel {
 		Student student = new Student(a,b,c,d,e);
 		return student;
 	}
-	public void clearTf() {
-		tfNo.setText("");
-		tfName.setText("");
-		tfKor.setText("");
-		tfMath.setText("");
-		tfEng.setText("");
+	@Override
+	public void setItem(Student item) {
+		tfNo.setText(item.getStdNo()+"");
+		tfName.setText(new String(item.getStdName()+""));
+		tfKor.setText(item.getKor()+"");
+		tfMath.setText(item.getMath()+"");
+		tfEng.setText(item.getEng()+"");
 	}
-	
-	private void setItem(Student std) {
-		tfNo.setText(std.getStdNo()+"");
-		tfName.setText(new String(std.getStdName()+""));
-		tfKor.setText(std.getKor()+"");
-		tfMath.setText(std.getMath()+"");
-		tfEng.setText(std.getEng()+"");
-	}
-	/*
-	 * protected void setStudent(ActionEvent e) { Student newStudent = new
-	 * Student(1,"장현서",80,90,70); setStudent(newStudent); }
-	 */
 }
