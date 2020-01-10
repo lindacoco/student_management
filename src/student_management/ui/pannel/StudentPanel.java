@@ -1,4 +1,4 @@
-package student_management.ui;
+package student_management.ui.pannel;
 
 import java.awt.GridLayout;
 
@@ -7,6 +7,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.TitledBorder;
+
+import student_management.dto.Student;
 
 public class StudentPanel extends JPanel {
 	private JLabel lblstdNo;
@@ -71,7 +73,7 @@ public class StudentPanel extends JPanel {
 		tfEng.setColumns(10);
 		add(tfEng);
 	}
-	public Student getStudent() {
+	public Student getItem() {
 		int a = Integer.parseInt(tfNo.getText().trim());
 		String b= tfName.getText().trim();
 		int c= Integer.parseInt(tfKor.getText().trim());
@@ -80,7 +82,7 @@ public class StudentPanel extends JPanel {
 		Student student = new Student(a,b,c,d,e);
 		return student;
 	}
-	private void clearTf() {
+	public void clearTf() {
 		tfNo.setText("");
 		tfName.setText("");
 		tfKor.setText("");
@@ -88,7 +90,7 @@ public class StudentPanel extends JPanel {
 		tfEng.setText("");
 	}
 	
-	private void setStudent(Student std) {
+	private void setItem(Student std) {
 		tfNo.setText(std.getStdNo()+"");
 		tfName.setText(new String(std.getStdName()+""));
 		tfKor.setText(std.getKor()+"");

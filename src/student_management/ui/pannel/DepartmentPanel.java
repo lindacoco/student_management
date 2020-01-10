@@ -1,9 +1,10 @@
-package student_management.dto;
+package student_management.ui.pannel;
 
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
-import student_management.ui.Student;
+import student_management.dto.Department;
+import student_management.dto.Student;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -14,9 +15,9 @@ public class DepartmentPanel extends JPanel {
 	private JLabel lblDeptNo;
 	private JTextField tfDeptNo;
 	private JLabel lblDeptName;
-	private JTextField textField;
+	private JTextField tfDeptName;
 	private JLabel lblFloor;
-	private JTextField textField_1;
+	private JTextField tfFloor;
 
 	/**
 	 * Create the panel.
@@ -41,35 +42,36 @@ public class DepartmentPanel extends JPanel {
 		lblDeptName.setHorizontalAlignment(SwingConstants.RIGHT);
 		add(lblDeptName);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
-		add(textField);
+		tfDeptName = new JTextField();
+		tfDeptName.setColumns(10);
+		add(tfDeptName);
 		
 		lblFloor = new JLabel("위치");
 		lblFloor.setHorizontalAlignment(SwingConstants.RIGHT);
 		add(lblFloor);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		add(textField_1);
+		tfFloor = new JTextField();
+		tfFloor.setColumns(10);
+		add(tfFloor);
 	}
-	public Department getDepartment() {
-		String a= tfDeptNo.getText().trim();
-		int b= Integer.parseInt(lblDeptName.getText().trim());
-		int c= Integer.parseInt(lblFloor.getText().trim());
+	public Department getItem() {
+		
+		int a= Integer.parseInt(tfDeptNo.getText().trim());
+		String b= tfDeptName.getText().trim();
+		int c= Integer.parseInt(tfFloor.getText().trim());
 		Department department = new Department(a,b,c);
 		return department;
 	}
-	private void clearTf() {
+	public void clearTf() {
 		tfDeptNo.setText("");
-		lblDeptName.setText("");
-		lblFloor.setText("");
+		tfDeptName.setText("");
+		tfFloor.setText("");
 	}
 	
-	private void setStudent(Student std) {
-		tfDeptNo.setText(std.getStdNo()+"");
-		lblDeptName.setText(new String(std.getStdName()+""));
-		lblFloor.setText(std.getKor()+"");
+	private void setItem(Department dept) {
+		tfDeptNo.setText(dept.getDeptNo()+"");
+		tfDeptName.setText(new String(dept.getDeptName()+""));
+		tfFloor.setText(dept.getFloor()+"");
 	}
 	
 }
